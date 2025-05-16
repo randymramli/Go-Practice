@@ -26,15 +26,15 @@ func (b bill) format() string {
 	// var total float64 = 0
 
 	for k, v := range b.items {
-		fs += fmt.Sprintf("%-25v ...%v \n", k+":", v)
+		fs += fmt.Sprintf("%-25v ...$%v \n", k+":", v)
 		b.total += v
 	}
 
 	b.total += b.tip
 
-	fs += fmt.Sprintf("%-25v ...%.2f\n", "Tip:", b.tip)
+	fs += fmt.Sprintf("%-25v ...$%v\n", "Tip:", b.tip)
 
-	fs += fmt.Sprintf("%-25v ...%.2f", "Total:", b.total)
+	fs += fmt.Sprintf("%-25v ...$%.2f", "Total:", b.total)
 
 	return fs
 }
