@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 type bill struct {
@@ -22,7 +23,7 @@ func newBill(name string) bill {
 }
 
 func (b bill) format() string {
-	fs := "Bill breakdown: \n"
+	fs := "Bill Breakdown: \n"
 	// var total float64 = 0
 
 	for k, v := range b.items {
@@ -45,4 +46,14 @@ func (b *bill) addTip(tip float64) {
 
 func (b *bill) addItem(name string, price float64) {
 	b.items[name] = price
+}
+
+func (b *bill) save() {
+	data := []byte(b.format())
+
+	err := os.WriteFile("bills/"+b.name+".txt", data, 0644)
+
+	if err != nil {
+		panic(err)
+	}
 }

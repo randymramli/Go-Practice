@@ -56,9 +56,8 @@ func prompOptions(b bill) {
 		prompOptions(b)
 
 	case "s":
-		fmt.Println("you chose to save the bill", b)
-		a := b.format()
-		fmt.Println(a)
+		b.save()
+		fmt.Println("you saved to file", b.name)
 
 	default:
 		fmt.Println("Not a valid option...")
